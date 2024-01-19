@@ -14,16 +14,7 @@ interface Props {
 }
 
 
-interface Pokemons{
-  id: number;
-  pokemonName: string;
-  
 
-}
-
-interface Props{
-  posts: Pokemons[];
-}
 
 
 const Home: React.FC<Props> = ({ pokemons })  => {
