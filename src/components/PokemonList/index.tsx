@@ -1,23 +1,35 @@
 import { GetServerSideProps } from 'next';
+import Text from "../Text";
+import Card from "../Card";
+import { SubmitHandler, useForm } from "react-hook-form";
+
 
 interface Pokemon {
     name: string;
 }
 
 interface Props {
-    pokemons: Pokemon[];
+    data: Pokemon[];
+    
 }
 
-const PokemonList: React.FC<Props> = ({ pokemons }) => {
+const PokemonList= ({ data }: Props) => {
+
+    const {
+        register, 
+        handleSubmit,
+    } = useForm<Pokemon>();
+
     return (
-        <div>
-            <h1>Pokémon List</h1>
+        <Card>
+            <Text>Pokémon List</Text>
+            <h1>Name</h1>
             <ul>
-                {pokemons.map(pokemon => (
+                {data.map(pokemon => (
                     <li key={pokemon.name}>{pokemon.name}</li>
                 ))}
             </ul>
-        </div>
+        </Card>
     );
 };
 
